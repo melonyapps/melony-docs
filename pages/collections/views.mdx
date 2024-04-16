@@ -1,0 +1,57 @@
+import { Code } from "../../components/code";
+import { Cards, Card } from "nextra/components";
+
+# Views
+
+The <Code>views</Code> section within the <Code>collections</Code> configuration of your admin panel empowers you to control how your collection's data is presented to users. Here's where you can define multiple views, each leveraging different layouts to best suit the type of data and how users might interact with it.
+
+## Example
+
+```js
+import { Config, fields, triggers, views } from "@melony/core/config";
+
+export const melonyConfig: Config = {
+  ...
+  collections: [
+    {
+      ...
+      views: [
+        views.kanban({
+          slug: "tasksAssignedToMe",
+          label: "My Tasks",
+          icon: "📝",
+        }),
+      ],
+    },
+  ],
+  ...
+};
+```
+
+## Available Views
+
+import { Calendar, Grid2x2, Kanban, Map, Table } from "lucide-react";
+
+<Cards>
+  <Card
+    icon={<Calendar size={48} />}
+    title="Calendar"
+    href="/collections/views/calendar"
+  />
+  <Card
+    icon={<Grid2x2 size={48} />}
+    title="Cards"
+    href="/collections/views/cards"
+  />
+  <Card
+    icon={<Kanban size={48} />}
+    title="Kanban"
+    href="/collections/views/kanban"
+  />
+  <Card icon={<Map size={48} />} title="Map" href="/collections/views/map" />
+  <Card
+    icon={<Table size={48} />}
+    title="Table"
+    href="/collections/views/table"
+  />
+</Cards>

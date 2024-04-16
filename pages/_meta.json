@@ -1,7 +1,14 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "quick-start": "Quick start",
+  "config": "Config",
+  "---": {
+    "title": "Config",
+    "type": "separator"
+  },
+  "ui": "UI",
+  "collections": "Collections",
+  "triggers": "Triggers",
   "about": {
     "title": "About",
     "type": "page"

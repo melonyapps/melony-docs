@@ -1,0 +1,144 @@
+import { Code } from "../../components/code";
+import { Cards, Card } from "nextra/components";
+
+# Schema
+
+The <Code>schema</Code> section within the <Code>collections</Code> configuration of your admin panel defines the structure of your data. Here, you'll specify the individual fields that make up your documents, and each field can have various parameters to customize its behavior. Let's explore some common parameters that apply to all types of fields:
+
+## Example
+
+```js
+import { Config, fields, triggers, views } from "@melony/core/config";
+
+export const melonyConfig: Config = {
+  id: "your-app-name",
+  ...
+  collections: [
+    {
+      ...
+      schema: [
+        fields.input({ slug: "title" }),
+        fields.checkbox({ slug: "done" }),
+      ],
+      ...
+    },
+  ],
+};
+```
+
+Universal Field Parameters:
+
+## Label
+
+<Code>label</Code> (User-Friendly Display): This is the human-readable name that
+will be displayed in the admin panel interface for each field. Make it clear and
+descriptive for easy user comprehension.
+
+## Slug
+
+<Code>slug</Code> (Unique Identifier): Assign a unique and memorable name for each
+field within your collection's schema. This helps with internal identification and
+potential code references.
+
+## Is required
+
+<Code>isRequired</Code> (Mandatory Fields): Enforce data integrity by specifying
+whether a field is mandatory for users to complete. Setting this to true makes the
+field required before saving a document.
+
+## Default value
+
+<Code>defaultValue</Code> (Providing Starting Values): Establish default values for
+your fields. This can streamline data entry by providing users with a starting point,
+especially for optional fields.
+
+---
+
+These common parameters provide a foundation for building your schema. In the next sections, we'll delve deeper into specific field types available in Melony and explore the additional configuration options they offer to create a robust and user-friendly data management experience.
+
+---
+
+# Fields
+
+import {
+  Check,
+  Palette,
+  DollarSign,
+  Calendar,
+  File,
+  Paperclip,
+  Image,
+  MapPin,
+  Hash,
+  KeyRound,
+  Text,
+  User,
+} from "lucide-react";
+
+<Cards>
+  <Card
+    icon={<Check size={48} />}
+    title="Checkbox"
+    href="/collections/schema/checkbox"
+  />
+  <Card
+    icon={<Palette size={48} />}
+    title="Color"
+    href="/collections/schema/color"
+  />
+  <Card
+    icon={<DollarSign size={48} />}
+    title="Currency"
+    href="/collections/schema/currency"
+  />
+  <Card
+    icon={<Calendar size={48} />}
+    title="Date"
+    href="/collections/schema/date"
+  />
+  <Card
+    icon={<File size={48} />}
+    title="Document"
+    href="/collections/schema/document"
+  />
+  <Card
+    icon={<Paperclip size={48} />}
+    title="File"
+    href="/collections/schema/file"
+  />
+  <Card
+    icon={<Image size={48} />}
+    title="Image"
+    href="/collections/schema/image"
+  />
+  <Card
+    icon={<MapPin size={48} />}
+    title="Location"
+    href="/collections/schema/location"
+  />
+  <Card
+    icon={<Hash size={48} />}
+    title="Number"
+    href="/collections/schema/number"
+  />
+  <Card
+    icon={<KeyRound size={48} />}
+    title="Password"
+    href="/collections/schema/password"
+  />
+  <Card
+    icon={<Text size={48} />}
+    title="Rich Text"
+    href="/collections/schema/rich-text"
+  />
+  <Card
+    icon={<Text size={48} />}
+    title="Text"
+    href="/collections/schema/text"
+  />
+  <Card
+    icon={<User size={48} />}
+    title="User"
+    href="/collections/schema/user"
+  />
+</Cards>

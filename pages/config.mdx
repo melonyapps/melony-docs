@@ -1,0 +1,63 @@
+import { Code } from "../components/code";
+
+# Configuration
+
+Melony keeps things simple with a single configuration file that lets you tailor it to your exact needs. This file acts as the central control panel for your production-ready full-stack application.
+
+Here's a quick breakdown of the key configuration options:
+
+- <Code>id:</Code> Give your app a unique identifier. Think of it as a name tag for
+  your admin panel.
+
+- <Code>ui:</Code> This is where you get to personalize the user interface! Add your
+  logo, set your app's name, and configure custom navigation elements in the sidebar
+  to match your brand.
+
+- <Code>collections:</Code> Here's where the magic happens. Define the schemas (structure)
+  for your MongoDB collections, configure how you want them displayed (views), and
+  specify actions users can take on the data.
+
+- <Code>triggers:</Code> Automate tasks with triggers! Listen for any changes in
+  your database or schedule events to fire custom functions. This allows you to create
+  powerful background jobs for streamlining your application logic.
+
+## Example
+
+```js
+import { Config, fields, triggers, views } from "@melony/core/config";
+
+export const melonyConfig: Config = {
+  id: "your-app-name",
+  ui: {
+    logo: "🤗",
+    title: "App Title Here",
+  },
+  collections: [
+    {
+      slug: "tasks",
+      label: "Tasks",
+      schema: [
+        fields.input({ slug: "title" }),
+        fields.select({ slug: "status" }),
+      ],
+      views: [
+        views.cards({
+          slug: "tasksAssignedToMe",
+          label: "My Tasks",
+          icon: "📝",
+        }),
+      ],
+    },
+  ],
+  triggers: [
+    triggers.db({
+      slug: "autoIncrementTaskId",
+      listen: "tasks",
+      on: ["create"],
+      func: async ({ db, type, oldDocument, newDocument }) => {
+        // your custom function goes here
+      },
+    }),
+  ],
+};
+```

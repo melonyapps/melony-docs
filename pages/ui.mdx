@@ -1,0 +1,57 @@
+import { Code } from "../components/code";
+
+# User Interface
+
+The <Code>ui</Code> section within the configuration file allows you to add your unique touch.
+
+## Example
+
+```js
+import { Config, fields, triggers, views } from "@melony/core/config";
+
+export const melonyConfig: Config = {
+  ui: {
+    logo: "🤗",
+    title: "App Title Here",
+    navigation: {
+      Pages: [
+        {
+          title: "Tasks",
+          to: "/tasks",
+          icon: "Folder",
+        },
+        {
+          title: "Users",
+          to: "/users",
+          icon: "Folder",
+        },
+      ],
+    },
+  },
+  ...
+};
+```
+
+Here's what you can configure:
+
+## Title
+
+<Code>title</Code>: Set the title displayed at the top of your admin panel.
+
+## Logo
+
+<Code>logo</Code> (SVG Friendly): Provide your brand's logo (in SVG format) to add
+a professional touch.
+
+## Navigation
+
+<Code>navigation</Code> (Building Your Navigation Menu): This is where you define
+the navigation elements users will see on the sidebar. It's an array of objects,
+each containing:
+
+- <Code>title</Code>: The text displayed for the navigation item.
+
+- <Code>to</Code>: Specify the URL (or route) where clicking the item should
+  take the user within the admin panel.
+
+- <Code>icon</Code> (Optional): Lucide Icons name.

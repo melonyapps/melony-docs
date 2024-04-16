@@ -1,0 +1,52 @@
+import { Code } from "../../components/code";
+
+# Actions
+
+Empower your users with custom actions! This section allows you to define functions that can be performed on individual documents or selected sets of documents within your collection. Common examples include actions like "move", "send mail", or "delete selected".
+
+## Example
+
+```js
+import { Config, fields, triggers, views } from "@melony/core/config";
+
+export const melonyConfig: Config = {
+  id: "your-app-name",
+  ...
+  collections: [
+    {
+        ...
+        actions: [{
+            label: "Send Email",
+            slug: "sendBulkEmail",
+            prompt: [
+                fields.input({ slug: "subject", label: "Email subject" })
+            ],
+            func: async ({ db, data, documents }) => {
+                // your custom function goes here
+            }
+        }],
+    },
+  ],
+  ...
+};
+```
+
+Action params:
+
+## Slug
+
+<Code>slug</Code> (Unique Identifier for Actions): Give your action a unique name.
+
+## Prompt
+
+<Code>prompt</Code> (Optional: Gathering Additional Information): Certain actions
+might require additional user input before execution. This section allows you to
+define a prompt that will be displayed to the user, requesting any necessary information.
+
+## Func
+
+<Code>func</Code> (The Heart of the Action): The func parameter is a JavaScript function
+that defines the logic behind your custom action. You have complete control over
+what this function does, allowing you to perform tasks like: Modifying document data
+within the collection. Triggering external APIs or services. Sending emails or notifications.
+Performing complex data manipulations. And much more!

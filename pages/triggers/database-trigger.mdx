@@ -1,0 +1,52 @@
+import { Code } from "../../components/code";
+
+# Database Trigger
+
+The triggers section in your project configuration grants you the power to define database triggers for real-time automation within your MongoDB collections.
+
+## Example
+
+```js
+import { Config, fields, triggers, views } from "@melony/core/config";
+
+export const melonyConfig: Config = {
+  ...
+  triggers: [
+    triggers.db({
+      slug: "autoIncrementTaskId",
+      listen: "tasks",
+      on: ["create", "update"],
+      func: async ({ db, type, oldDocument, newDocument }) => {
+        // your custom function goes here
+      },
+    }),
+  ],
+};
+```
+
+Here's how to configure them:
+
+## Slug
+
+<Code>slug</Code> (Unique Trigger Identifier): Give your trigger an unique name within
+your configuration for easy identification.
+
+## Listen
+
+<Code>listen</Code> (Specifying the Collection): Define the specific MongoDB collection
+this trigger should listen to for changes. This ensures your custom function only
+executes when relevant events occur within that collection.
+
+## On
+
+<Code>on</Code> (Event-Driven Activation): Control when your trigger fires. This
+parameter specifies the type of database event that will activate the custom function.{" "}
+
+## Func
+
+<Code>func</Code> (The Heart of the Trigger): This is where you define the custom
+JavaScript function that will be executed when the trigger fires. You have complete
+control over what this function does, allowing you to automate tasks like: Performing
+additional data validation or processing upon document creation or update. Sending
+notifications or triggering other actions based on database changes. Interacting
+with external APIs or services based on specific events.

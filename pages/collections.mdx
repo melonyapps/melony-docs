@@ -1,0 +1,73 @@
+import { Code } from "../components/code";
+
+# Collections
+
+The <Code>collections</Code> section within your configuration file is the heart of your data management. Here, you'll define how your MongoDB collections are structured, displayed, and interacted with.
+
+## Example
+
+```js
+import { Config, fields, triggers, views } from "@melony/core/config";
+
+export const melonyConfig: Config = {
+  id: "your-app-name",
+  ...
+  collections: [
+    {
+        slug: "tasks",
+        label: "Tasks",
+        schema: [
+            fields.input({ slug: "title" }),
+            fields.select({ slug: "status" }),
+        ],
+        views: [
+            views.cards({
+            slug: "tasksAssignedToMe",
+            label: "My Tasks",
+            icon: "📝",
+            }),
+        ],
+        actions: [{
+            slug: "sendBulkEmail",
+            func: async ({ db, documents }) => {
+                // your custom function goes here
+            }
+        }],
+    },
+  ],
+  ...
+};
+```
+
+Collection params:
+
+## Slug
+
+<Code>slug</Code> (Unique Identifier): This acts as a "collection path" or "table
+name". It must be unique within your configuration.
+
+## Label
+
+<Code>label</Code> (Human-Readable Name): This is the user-friendly name that will
+be displayed throughout the admin panel interface for your collection.
+
+## Schema
+
+<Code>schema</Code> (Structuring Your Data): Define the structure of your data within
+the collection. This is similar to a blueprint, specifying the data types (like strings,
+numbers, or booleans) for each field within your documents.
+
+## Views
+
+<Code>views</Code> (Customizing Data Display): Control how your collection's data
+is presented in the admin panel. You can define multiple views, each showcasing a
+specific selection of fields or utilizing different layouts to best suit your needs.
+
+## Actions
+
+<Code>actions</Code> (Taking Control with Custom Functionality): Empower your users
+with custom actions! This section allows you to define functions that can be performed
+on individual documents or selected sets of documents within your collection. Common
+examples include actions like "move", "send mail", or "delete selected".
+
+We'll delve deeper into schema, views and actions in the next sections, providing a detailed explanation of how to configure them effectively.
